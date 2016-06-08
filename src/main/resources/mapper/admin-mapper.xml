@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+    <insert id="create" parameterType="demo.model.Admin" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO exam.admin VALUES (NULL,#{email}, #{username}, #{password})
+        </insert>
+    <select id="login" parameterType="String" resultType="demo.model.Admin">
+        SELECT * FROM exam.admin WHERE email = #{email}
+    </select>
+    <select id="queryAll" resultType="demo.model.Admin">
+        SELECT * FROM exam.admin ;
+    </select>
+    <select id="search" parameterType="int" resultType="demo.model.Admin">
+        SELECT * FROM exam.admin WHERE id=#{id};
+    </select>
+    <update id="update" parameterType="demo.model.Admin">
+        UPDATE exam.admin SET email = #{email},username = #{username}WHERE id=#{id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM exam.admin WHERE id=#{id}
+    </delete>
+
+</mapper>
